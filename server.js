@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const lyricsFinder = require("lyrics-finder");
 const SpotifyWebApi = require("spotify-web-api-node");
 const Genius = require("genius-lyrics");
+const port = process.env.PORT || 4000;
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
@@ -63,4 +64,6 @@ app.get("/lyrics", async (req, res) => {
   res.json({ lyrics });
 });
 
-app.listen(10000);
+app.listen(port, () => {
+  console.log(`App Listening on port ${port}`);
+});
